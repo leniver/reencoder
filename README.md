@@ -31,12 +31,20 @@ Prefer to build from source instead? See [Build & run](#build--run).
 4. Click **Start**. Status updates per file (Encoding → OK / Skipped / Error),
    with a per-file progress bar and an overall files-done bar.
 
-## Tracking file (replaces `.enc` markers)
-Instead of writing a `<file>.enc` next to every video, encoded files are recorded
-in a single flat text file — one absolute path per line — set in **Tracking
-file** (defaults to `reencoded.list` in the chosen folder). The "does this need
-encoding?" check is a membership lookup against that list (the equivalent of a
-`grep`). On success, the file's path is appended.
+## Encoding
+Video is encoded with **`libx265` — the software (CPU) HEVC encoder** — driven by
+`-crf` (quality), `-preset` (speed/efficiency), and `-threads`. Audio is copied
+unchanged (`-c:a copy`). There is **no GPU/hardware acceleration** (no NVENC, QSV,
+or AMF): the tool's goal is to shrink an archive in place, and CPU x265 gives the
+best quality-per-byte for that. The trade-off is speed — encoding is CPU-bound and
+runs at idle priority in the background, so it's slow by design but stays out of
+your way.
+
+## Tracking file
+Encoded files are recorded in a single flat text file — one absolute path per
+line — set in **Tracking file** (defaults to `reencoded.list` in the chosen
+folder). The "does this need encoding?" check is a membership lookup against that
+list. On success, the file's path is appended.
 
 To force a re-encode, remove its line from the tracking file (or delete the file
 entirely to start fresh).
