@@ -10,6 +10,7 @@
     <AssemblyName>Reencoder</AssemblyName>
     <RootNamespace>Reencoder</RootNamespace>
     <Version>0.1.0</Version>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   </PropertyGroup>
 
 </Project>
