@@ -79,9 +79,3 @@ Self-contained single exe:
 dotnet publish -c Release -r win-x64 --self-contained true ^
   -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
 ```
-
-## Notes / differences from bash
-- `nice -n 19` maps to Idle CPU priority on the ffmpeg child.
-- `ionice -c3` has no clean per-child equivalent on Windows; idle CPU priority
-  is the closest available, so disk-I/O throttling is weaker than on Linux.
-- The folder scan skips subfolders it can't read rather than aborting.
