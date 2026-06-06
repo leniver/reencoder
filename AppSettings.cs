@@ -19,7 +19,7 @@ public sealed class AppSettings
     public string Preset { get; set; } = "medium";
     public int MinAgeMinutes { get; set; } = 30;
     public int Threads { get; set; } = 2;
-    public bool KeepOriginal { get; set; }
+    public bool KeepOriginal { get; set; } = true;
     public bool WriteLog { get; set; } = true;
     public string LogPath { get; set; } = "";
 
