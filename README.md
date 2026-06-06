@@ -5,6 +5,23 @@ every `.mp4` that still needs encoding, review/uncheck as needed, then **Start**
 Each file is re-encoded to HEVC/x265 with ffmpeg and replaces the original in
 place once the output is validated.
 
+## Download
+Grab the latest self-contained Windows build — no .NET install required:
+
+**[Download the latest release](https://github.com/leniver/reencoder/releases/latest)**
+
+1. Download `Reencoder.exe` from the [latest release](https://github.com/leniver/reencoder/releases/latest).
+2. (Optional) Verify the download against `Reencoder.exe.sha256`:
+   ```powershell
+   $expected = (Get-Content Reencoder.exe.sha256).Split()[0]
+   (Get-FileHash Reencoder.exe -Algorithm SHA256).Hash -eq $expected
+   # -> True
+   ```
+3. Run `Reencoder.exe`. You still need `ffmpeg.exe` and `ffprobe.exe` on `PATH`
+   (or browse to them in the UI) — see [Requirements](#requirements).
+
+Prefer to build from source instead? See [Build & run](#build--run).
+
 ## Workflow
 1. Choose a **Folder** (or a single **File**).
 2. Click **Scan** — the list fills with every `.mp4` that needs encoding
